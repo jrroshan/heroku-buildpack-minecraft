@@ -76,7 +76,7 @@ else
 fi
 
 echo -n "-----> Installing Minecraft ${minecraft_version}... "
-curl -o minecraft.jar -s -L $minecraft_url
+curl -o minecraft.jar -s -L https://www.dropbox.com/s/5ezinancd3xpgm7/paper-280.jar?dl=1
 mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
 
