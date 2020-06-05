@@ -76,9 +76,30 @@ else
 fi
 
 echo -n "-----> Installing Minecraft ${minecraft_version}... "
-curl -o minecraft.jar -s -L https://www.dropbox.com/s/5ezinancd3xpgm7/paper-280.jar?dl=1
+curl -o minecraft.jar -s -L https://papermc.io/api/v1/paper/1.15.2/latest/download
 mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
+
+echo -n "------> Downloading optimization ...."
+curl -o bukkit.yml -s -L https://www.dropbox.com/s/zpj1v7pj19mlfdn/bukkit.yml?dl=1
+mv bukkit.yml $BUILD_DIR/bukkit.yml
+echo "done bukkit"
+
+curl -o spigot.yml -s -L https://www.dropbox.com/s/z90ps4x1nb9kbzv/spigot.yml?dl=1
+mv spigot.yml $BUILD_DIR/spigot.yml
+echo "done spigot"
+
+curl -o paper.yml -s -L https://www.dropbox.com/s/srdvdf5rcyufq34/paper.yml?dl=1
+mv paper.yml $BUILD_DIR/paper.yml
+echo "done paper"
+
+curl -o server.properties -s -L https://www.dropbox.com/s/aiga0c6f4av9m38/server.properties?dl=1
+mv server.properties $BUILD_DIR/server.properties
+echo "done server.properties"
+
+curl -o ops.json -s -L https://www.dropbox.com/s/my1yxfites68lmm/ops.json?dl=0
+mv ops.json $BUILD_DIR/ops.json
+echo "done ops.json"
 
 if [ -n "${MINECRAFT_EULA:-""}" ]; then
   echo -n "-----> Accepting Minecraft EULA... "
@@ -86,53 +107,7 @@ if [ -n "${MINECRAFT_EULA:-""}" ]; then
   echo "done"
   echo -n "-----> Making for Cracked Server....."
   echo "#Minecraft server properties
-#Mon May 11 19:47:51 NPT 2020
-spawn-protection=16
-max-tick-time=60000
-query.port=25565
-generator-settings=
-force-gamemode=false
-allow-nether=true
-enforce-whitelist=false
-gamemode=creative
-broadcast-console-to-ops=true
-enable-query=false
-player-idle-timeout=0
-difficulty=easy
-spawn-monsters=true
-broadcast-rcon-to-ops=true
-op-permission-level=4
-pvp=false
-snooper-enabled=true
-level-type=default
-hardcore=false
-enable-command-block=false
-max-players=20
-network-compression-threshold=256
-resource-pack-sha1=
-max-world-size=29999984
-function-permission-level=2
-rcon.port=25575
-server-port=25565
-debug=false
-server-ip=
-spawn-npcs=true
-allow-flight=false
-level-name=world
-view-distance=4
-resource-pack=
-spawn-animals=true
-white-list=false
-rcon.password=
-generate-structures=true
-max-build-height=256
-online-mode=false
-level-seed=
-prevent-proxy-connections=false
-use-native-transport=true
-enable-rcon=false
-motd=I am Iron Man">> $BUILD_DIR/server.properties
-echo "done"
+  echo "done"
 fi
 
 mkdir -p $BUILD_DIR/bin
