@@ -106,7 +106,7 @@ if [ -n "${MINECRAFT_EULA:-""}" ]; then
   echo "eula=true" >> $BUILD_DIR/eula.txt
   echo "done"
   echo -n "-----> Making for Cracked Server....."
-  echo "#Minecraft server properties
+  echo "#Minecraft server properties"
   echo "done"
 fi
 
